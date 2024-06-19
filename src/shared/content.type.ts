@@ -13,9 +13,10 @@ interface Expert {
   company: string;
 }
 
-interface ContentCardEdge {
+export interface ContentCardEdge {
   __typename: string;
   name: string;
+  length: number;
   image: Image;
   categories: Category[];
   experts: Expert[];
