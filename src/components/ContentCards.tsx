@@ -13,7 +13,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
   };
 
   return (
-    <section className="flex flex-col gap-[20px] my-[24px]">
+    <section className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-[24px]">
       {cards.map((card) => (
         <article key={card.name} className="w-full rounded-[10px] bg-white">
           <div className="relative border-b-2 border-b-grey-400">
