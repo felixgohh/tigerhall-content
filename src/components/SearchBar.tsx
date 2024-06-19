@@ -23,7 +23,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           value={searchTerm}
           onChange={onSearchChange}
           aria-label="Search podcasts"
-          className="bg-transparent outline-none"
+          className="bg-transparent outline-none w-[calc(100%-24px)]"
         />
       </div>
     </form>
