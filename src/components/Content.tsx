@@ -36,9 +36,11 @@ const Content: React.FC = () => {
   return (
     <main>
       <SearchBar searchTerm={searchKey} onSearchChange={handleSearchChange} />
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
-      {data && <ContentCards cards={data.contentCards.edges} />}
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-[24px]">
+        {loading && <p>Loading...</p>}
+        {error && <p>Error: {error.message}</p>}
+        {data && <ContentCards cards={data.contentCards.edges} />}
+      </section>
     </main>
   );
 };
