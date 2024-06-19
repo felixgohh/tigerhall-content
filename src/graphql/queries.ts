@@ -15,6 +15,7 @@ export const GET_CONTENT_CARDS = gql`
           experts {
             ...Expert
           }
+          length
         }
       }
     }

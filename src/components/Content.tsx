@@ -6,6 +6,7 @@ import {
   GetContentCardsVars,
 } from '../shared/content.type';
 import SearchBar from './SearchBar';
+import ContentCards from './ContentCards';
 
 const Content: React.FC = () => {
   const [searchKey, setSearchKey] = useState<string>('');
@@ -37,13 +38,7 @@ const Content: React.FC = () => {
       <SearchBar searchTerm={searchKey} onSearchChange={handleSearchChange} />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      {data &&
-        data.contentCards.edges.map((edge) => (
-          <div key={edge.name}>
-            <h2>{edge.name}</h2>
-            <img src={edge.image.uri} alt={edge.name} />
-          </div>
-        ))}
+      {data && <ContentCards cards={data.contentCards.edges} />}
     </main>
   );
 };
