@@ -31,7 +31,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
               <IonIcon name="time-outline"></IonIcon>
               <p>{convertMinutesToHours(card.length)}</p>
             </div>
-            <figure className="w-full h-[120px]">
+            <figure className="w-full h-[30vw] lg:h-[10vw]">
               <img
                 src={card.image.uri}
                 alt={card.name}
