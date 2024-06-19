@@ -1,27 +1,49 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_CONTENT_CARDS } from '../graphql/queries';
+import {
+  GetContentCardsData,
+  GetContentCardsVars,
+} from '../shared/content.type';
 import SearchBar from './SearchBar';
 
 const Content: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [debouncedSearch, setDebouncedSearch] = useState<string>(searchQuery);
+  const [searchKey, setSearchKey] = useState<string>('');
+  const [debounceSearch, setDebouncedSearch] = useState<string>(searchKey);
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedSearch(searchQuery);
+      setDebouncedSearch(searchKey);
     }, 300);
 
     return () => {
       clearTimeout(handler);
     };
-  }, [searchQuery]);
+  }, [searchKey]);
+
+  const { loading, error, data } = useQuery<
+    GetContentCardsData,
+    GetContentCardsVars
+  >(GET_CONTENT_CARDS, {
+    variables: { keywords: debounceSearch },
+  });
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
+    setSearchKey(event.target.value);
   };
 
   return (
     <main>
-      <SearchBar searchTerm={searchQuery} onSearchChange={handleSearchChange} />
+      <SearchBar searchTerm={searchKey} onSearchChange={handleSearchChange} />
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error.message}</p>}
+      {data &&
+        data.contentCards.edges.map((edge) => (
+          <div key={edge.name}>
+            <h2>{edge.name}</h2>
+            <img src={edge.image.uri} alt={edge.name} />
+          </div>
+        ))}
     </main>
   );
 };
