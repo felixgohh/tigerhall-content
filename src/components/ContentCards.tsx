@@ -13,7 +13,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
   };
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-[24px]">
+    <>
       {cards.map((card) => (
         <article
           key={card.name}
@@ -70,7 +70,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
           </div>
         </article>
       ))}
-    </section>
+    </>
   );
 };
 
