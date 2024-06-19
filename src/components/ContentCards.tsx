@@ -15,7 +15,10 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-[24px]">
       {cards.map((card) => (
-        <article key={card.name} className="w-full rounded-[10px] bg-white">
+        <article
+          key={card.name}
+          className="w-full h-full flex flex-col rounded-[10px] bg-white"
+        >
           <div className="relative border-b-2 border-b-grey-400">
             <div className="flex flex-row items-center gap-[5px] absolute left-0 top-0 bg-orange-50 p-[8px] rounded-br-[10px] rounded-tl-[10px]">
               <IonIcon
@@ -39,7 +42,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
               />
             </figure>
           </div>
-          <div className="p-[14px] flex flex-col">
+          <div className="p-[14px] flex flex-col flex-1">
             <p className="text-sm text-grey-700 font-semibold uppercase">
               {card.categories[0].name}
             </p>
@@ -56,7 +59,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
                   : 'Lorem Ipsum'}
               </p>
             </div>
-            <div className="flex flex-row ml-auto gap-[10px] text-md text-orange-600">
+            <div className="flex flex-row mt-auto ml-auto gap-[10px] text-md text-orange-600">
               <button className="flex" type="button">
                 <IonIcon name="share-social-outline"></IonIcon>
               </button>
