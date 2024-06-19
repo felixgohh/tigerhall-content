@@ -39,7 +39,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
               />
             </figure>
           </div>
-          <div className="p-[10px] flex flex-col">
+          <div className="p-[14px] flex flex-col">
             <p className="text-sm text-grey-700 font-semibold uppercase">
               {card.categories[0].name}
             </p>
