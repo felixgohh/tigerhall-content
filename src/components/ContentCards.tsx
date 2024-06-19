@@ -12,6 +12,14 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
     return hours ? `${hours}h ${remainingMinutes}m` : `${remainingMinutes}m`;
   };
 
+  if (!cards.length) {
+    return (
+      <p className="w-full text-center font-semibold">
+        Content not found! Please try another keyword.
+      </p>
+    );
+  }
+
   return (
     <>
       {cards.map((card) => (
