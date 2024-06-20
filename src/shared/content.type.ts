@@ -6,10 +6,9 @@ interface Category {
   name: string;
 }
 
-interface Expert {
+interface Participant {
   firstName: string;
   lastName: string;
-  title: string;
   company: string;
 }
 
