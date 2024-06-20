@@ -5,6 +5,7 @@ import {
   GetContentCardsData,
   GetContentCardsVars,
 } from '../shared/content.type';
+import { Box, Grid, Text } from '@chakra-ui/react';
 import SearchBar from './SearchBar';
 import ContentCards from './ContentCards';
 import LoadingCards from './LoadingCards';
@@ -35,19 +36,24 @@ const Content: React.FC = () => {
   };
 
   return (
-    <main>
+    <Box as="main">
       <SearchBar searchTerm={searchKey} onSearchChange={handleSearchChange} />
-      <section
-        className={`grid grid-cols-1 ${
-          (loading || (data && data.contentCards.edges.length)) &&
-          'lg:grid-cols-3'
-        } gap-5 my-6`}
+      <Grid
+        templateColumns={{
+          base: 'repeat(1, 1fr)',
+          lg:
+            loading || (data && data.contentCards.edges.length)
+              ? 'repeat(3, 1fr)'
+              : 'repeat(1, 1fr)',
+        }}
+        gap={5}
+        my={6}
       >
         {loading && <LoadingCards />}
-        {error && <p>Error: {error.message}</p>}
+        {error && <Text>Error: {error.message}</Text>}
         {data && <ContentCards cards={data.contentCards.edges} />}
-      </section>
-    </main>
+      </Grid>
+    </Box>
   );
 };
 

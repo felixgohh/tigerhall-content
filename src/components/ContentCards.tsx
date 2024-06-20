@@ -1,5 +1,6 @@
 import IonIcon from '@reacticons/ionicons';
 import { ContentCardEdge } from '../shared/content.type';
+import { Box, Button, Flex, Icon, Image, Text } from '@chakra-ui/react';
 
 interface ContentCardsProps {
   cards: ContentCardEdge[];
@@ -14,69 +15,131 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
 
   if (!cards.length) {
     return (
-      <p className="w-full text-center font-semibold">
+      <Text
+        w="full"
+        textAlign="center"
+        fontSize={{ base: 'sm', lg: 'lg' }}
+        mt={10}
+      >
         Content not found! Please try another keyword.
-      </p>
+      </Text>
     );
   }
 
   return (
     <>
       {cards.map((card) => (
-        <article
+        <Box
           key={card.name}
-          className="w-full h-full flex flex-col rounded-xl bg-white"
+          w="full"
+          h="full"
+          display="flex"
+          flexDirection="column"
+          borderRadius="xl"
+          bg="white"
         >
-          <div className="relative border-b-2 border-b-grey-400">
-            <div className="flex flex-row items-center gap-[5px] absolute left-0 top-0 bg-orange-50 p-2 rounded-br-[10px] rounded-tl-[10px]">
-              <IonIcon
+          <Box position="relative" borderBottom="2px" borderColor="grey.400">
+            <Flex
+              position="absolute"
+              top={0}
+              left={0}
+              bg="orange.50"
+              p={2}
+              borderTopLeftRadius={10}
+              borderBottomRightRadius={10}
+              alignItems="center"
+              gap={1}
+            >
+              <Icon
+                as={IonIcon}
                 name="pie-chart"
-                className="text-orange-400 text-sm"
-              ></IonIcon>
-              <p className="text-sm font-bold text-black">0% Completed</p>
-            </div>
-            <div className="flex w-6 h-6 bg-orange-600 p-[5px] rounded-full absolute left-[5px] bottom-[5px]">
-              <IonIcon name="headset" className="text-white"></IonIcon>
-            </div>
-            <div className="flex flex-row items-center gap-[5px] text-sm absolute right-[5px] bottom-[5px] py-[4px] px-2 rounded-[100px] bg-black text-white font-bold">
-              <IonIcon name="time-outline"></IonIcon>
-              <p>{convertMinutesToHours(card.length)}</p>
-            </div>
-            <figure className="w-full h-[30vw] lg:h-[10vw]">
-              <img
+                color="orange.400"
+                boxSize={4}
+              />
+              <Text fontSize="sm" fontWeight={700} color="black">
+                0% Completed
+              </Text>
+            </Flex>
+            <Flex
+              w={6}
+              h={6}
+              bg="orange.600"
+              p={1}
+              borderRadius="full"
+              position="absolute"
+              left={1}
+              bottom={1}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Icon as={IonIcon} name="headset" color="white" boxSize={4} />
+            </Flex>
+            <Flex
+              position="absolute"
+              right={1}
+              bottom={1}
+              py={1}
+              px={2}
+              borderRadius="full"
+              bg="black"
+              color="white"
+              alignItems="center"
+              gap={1}
+            >
+              <Icon as={IonIcon} name="time-outline" />
+              <Text fontWeight={800} fontSize={12}>
+                {convertMinutesToHours(card.length)}
+              </Text>
+            </Flex>
+            <Box as="figure" w="full" h={{ base: '30vw', lg: '10vw' }}>
+              <Image
                 src={card.image.uri}
                 alt={card.name}
-                className="w-full h-full object-cover rounded-tl-[10px] rounded-tr-[10px]"
+                w="full"
+                h="full"
+                objectFit="cover"
+                borderTopRadius={10}
               />
-            </figure>
-          </div>
-          <div className="p-[14px] flex flex-col flex-1">
-            <p className="text-sm text-grey-700 font-semibold uppercase">
+            </Box>
+          </Box>
+          <Box p={3} display="flex" flexDirection="column" flex={1}>
+            <Text
+              fontSize="sm"
+              color="grey.700"
+              fontWeight={600}
+              lineHeight="normal"
+              textTransform="uppercase"
+            >
               {card.categories[0].name}
-            </p>
-            <h3 className="text-md font-bold mt-[3px] text-black capitalize leading-tight">
+            </Text>
+            <Text
+              fontSize="lg"
+              fontWeight={800}
+              mt={1}
+              color="black"
+              textTransform="capitalize"
+              lineHeight="normal"
+            >
               {card.name}
-            </h3>
-            <div className="text-sm capitalize leading-tight mt-2">
-              <p className="text-grey-800">
+            </Text>
+            <Box fontSize="sm" textTransform="capitalize" mt={2}>
+              <Text color="grey.800" fontWeight={500} lineHeight="normal">
                 {card.experts[0].firstName} {card.experts[0].lastName}
-              </p>
-              <p className="text-grey-700 font-bold">
-                {card.experts[0].company
-                  ? card.experts[0].company
-                  : 'Lorem Ipsum'}
-              </p>
-            </div>
-            <div className="flex flex-row mt-auto ml-auto gap-[10px] text-md text-orange-600">
-              <button className="flex" type="button">
-                <IonIcon name="share-social-outline"></IonIcon>
-              </button>
-              <button className="flex" type="button">
-                <IonIcon name="bookmark-outline"></IonIcon>
-              </button>
-            </div>
-          </div>
-        </article>
+              </Text>
+              <Text color="grey.700" fontWeight={800} lineHeight="normal">
+                {card.experts[0].company || 'Lorem Ipsum'}
+              </Text>
+            </Box>
+            <Flex mt="auto" ml="auto" gap={2}>
+              <Button variant="ghost" p={0} minWidth="fit-content">
+                <Icon as={IonIcon} name="share-social-outline" fontSize="lg" />
+              </Button>
+              <Button variant="ghost" p={0} minWidth="fit-content">
+                <Icon as={IonIcon} name="bookmark-outline" fontSize="lg" />
+              </Button>
+            </Flex>
+          </Box>
+        </Box>
       ))}
     </>
   );

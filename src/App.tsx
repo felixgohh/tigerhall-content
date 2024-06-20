@@ -1,16 +1,19 @@
 import React from 'react';
 import Content from './components/Content';
+import { Box, Center, Heading } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div className="w-[70%] py-6 mx-auto">
+    <Box width="70%" py="6" mx="auto">
       <header>
-        <h1 className="text-2xl font-bold text-center mb-4">
-          TigerHall Content
-        </h1>
+        <Center mb={{ base: 4, lg: 8 }}>
+          <Heading as="h1" size="xl" fontWeight={800}>
+            TigerHall Content
+          </Heading>
+        </Center>
       </header>
       <Content />
-    </div>
+    </Box>
   );
 }
 
