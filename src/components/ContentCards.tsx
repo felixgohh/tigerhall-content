@@ -1,3 +1,4 @@
+import React from 'react';
 import IonIcon from '@reacticons/ionicons';
 import { ContentCardEdge } from '../shared/content.type';
 import { Box, Button, Flex, Icon, Image, Text } from '@chakra-ui/react';
@@ -20,6 +21,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
         textAlign="center"
         fontSize={{ base: 'sm', lg: 'lg' }}
         mt={10}
+        data-testid="not-found-message"
       >
         Content not found! Please try another keyword.
       </Text>
@@ -28,7 +30,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
 
   return (
     <>
-      {cards.map((card) => (
+      {cards.map((card, idx) => (
         <Box
           key={card.name}
           w="full"
@@ -37,6 +39,7 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
           flexDirection="column"
           borderRadius="xl"
           bg="white"
+          data-testid={`content-card-${idx}`}
         >
           <Box position="relative" borderBottom="2px" borderColor="grey.400">
             <Flex
