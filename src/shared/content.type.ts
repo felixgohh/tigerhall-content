@@ -18,7 +18,7 @@ export interface ContentCardEdge {
   length: number;
   image: Image;
   categories: Category[];
-  experts: Expert[];
+  participants: Participant[];
 }
 
 export interface GetContentCardsData {

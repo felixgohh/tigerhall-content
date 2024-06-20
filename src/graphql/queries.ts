@@ -12,8 +12,8 @@ export const GET_CONTENT_CARDS = gql`
           categories {
             ...Category
           }
-          experts {
-            ...Expert
+          participants {
+            ...Participant
           }
           length
         }
