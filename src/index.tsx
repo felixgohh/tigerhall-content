@@ -4,16 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
+import { ChakraProvider } from '@chakra-ui/react';
 import client from './apolloClient';
+import theme from './lib/theme';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <ChakraProvider theme={theme}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );
 
