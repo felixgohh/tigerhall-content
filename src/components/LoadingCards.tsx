@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Skeleton, Stack } from '@chakra-ui/react';
 
 const LoadingCards: React.FC = () => {
@@ -11,6 +12,7 @@ const LoadingCards: React.FC = () => {
           shadow="lg"
           borderColor="grey.700"
           key={`loading-${arr}`}
+          data-testid={`loading-card-${arr}`}
         >
           <Skeleton h="48" roundedTop="lg"></Skeleton>
           <Box p="4">

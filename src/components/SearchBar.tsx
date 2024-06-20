@@ -1,6 +1,6 @@
+import React, { ChangeEvent, FormEvent } from 'react';
 import { Flex, Icon, Input } from '@chakra-ui/react';
 import IonIcon from '@reacticons/ionicons';
-import React, { ChangeEvent, FormEvent } from 'react';
 
 interface SearchBarProps {
   searchTerm: string;
@@ -31,6 +31,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           type="text"
           value={searchTerm}
           onChange={onSearchChange}
+          data-testid="search-input-form"
           aria-label="Search podcasts"
           bg="transparent"
           outline="none"
