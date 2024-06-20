@@ -1,9 +1,17 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  act,
+} from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
 import Content from '../components/Content';
 import { GET_CONTENT_CARDS } from '../graphql/queries';
 import '@testing-library/jest-dom/extend-expect';
+
+jest.useFakeTimers();
 
 const mocks = [
   {
@@ -79,6 +87,11 @@ describe('Content Component', () => {
     // Fire change event to search input with 'abcascaas' as the value
     const searchInput = screen.getByTestId('search-input-form');
     fireEvent.change(searchInput, { target: { value: 'abcascaas' } });
+
+    // Fast forward 300ms to skip search input debounce
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
 
     // Wait for the loading state to be displayed
     await waitFor(() => {
