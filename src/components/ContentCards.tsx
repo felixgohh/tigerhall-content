@@ -124,10 +124,10 @@ const ContentCards: React.FC<ContentCardsProps> = ({ cards }) => {
             </Text>
             <Box fontSize="sm" textTransform="capitalize" mt={2}>
               <Text color="grey.800" fontWeight={500} lineHeight="normal">
-                {card.experts[0].firstName} {card.experts[0].lastName}
+                {card.participants[0].firstName} {card.participants[0].lastName}
               </Text>
               <Text color="grey.700" fontWeight={800} lineHeight="normal">
-                {card.experts[0].company || 'Lorem Ipsum'}
+                {card.participants[0].company || 'Lorem Ipsum'}
               </Text>
             </Box>
             <Flex mt="auto" ml="auto" gap={2}>

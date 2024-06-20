@@ -12,8 +12,8 @@ export const GET_CONTENT_CARDS = gql`
           categories {
             ...Category
           }
-          experts {
-            ...Expert
+          participants {
+            ...Participant
           }
           length
         }
@@ -29,10 +29,9 @@ export const GET_CONTENT_CARDS = gql`
     name
   }
 
-  fragment Expert on Expert {
+  fragment Participant on User {
     firstName
     lastName
-    title
     company
   }
 `;

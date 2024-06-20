@@ -6,10 +6,9 @@ interface Category {
   name: string;
 }
 
-interface Expert {
+interface Participant {
   firstName: string;
   lastName: string;
-  title: string;
   company: string;
 }
 
@@ -19,7 +18,7 @@ export interface ContentCardEdge {
   length: number;
   image: Image;
   categories: Category[];
-  experts: Expert[];
+  participants: Participant[];
 }
 
 export interface GetContentCardsData {
