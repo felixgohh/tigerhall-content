@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import Content from './components/Content';
+import { Box, Center, Heading } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Box width="70%" py="6" mx="auto">
+      <header>
+        <Center mb={{ base: 4, lg: 8 }}>
+          <Heading as="h1" size="xl" fontWeight={800}>
+            TigerHall Content
+          </Heading>
+        </Center>
       </header>
-    </div>
+      <Content />
+    </Box>
   );
 }
 
