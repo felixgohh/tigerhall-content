@@ -1,3 +1,4 @@
+import { Flex, Icon, Input } from '@chakra-ui/react';
 import IonIcon from '@reacticons/ionicons';
 import React, { ChangeEvent, FormEvent } from 'react';
 
@@ -16,16 +17,33 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   return (
     <form role="search" autoComplete="off" onSubmit={handleSubmit}>
-      <div className="flex flex-row items-center p-[14px] bg-grey-900 rounded-[4px] border border-grey-700">
-        <IonIcon name="search" className="mr-[10px]"></IonIcon>
-        <input
+      <Flex
+        as="label"
+        alignItems="center"
+        px={3}
+        bg="gray.900"
+        borderRadius={4}
+        border="1px"
+        borderColor="gray.700"
+      >
+        <Icon as={IonIcon} name="search" mr={2} />
+        <Input
           type="text"
           value={searchTerm}
           onChange={onSearchChange}
           aria-label="Search podcasts"
-          className="bg-transparent outline-none w-[calc(100%-24px)]"
+          bg="transparent"
+          outline="none"
+          w="calc(100% - 24px)"
+          border="none"
+          px={0}
+          sx={{
+            _focus: {
+              boxShadow: 'none',
+            },
+          }}
         />
-      </div>
+      </Flex>
     </form>
   );
 };
