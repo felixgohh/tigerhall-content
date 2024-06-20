@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
 import { ChakraProvider } from '@chakra-ui/react';
-import client from './apolloClient';
+import client from './store/apolloClient';
 import theme from './lib/theme';
 
 const root = ReactDOM.createRoot(
