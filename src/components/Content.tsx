@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_CONTENT_CARDS } from '../graphql/queries';
 import {
@@ -9,20 +9,11 @@ import { Box, Grid, Text } from '@chakra-ui/react';
 import SearchBar from './SearchBar';
 import ContentCards from './ContentCards';
 import LoadingCards from './LoadingCards';
+import useDebounce from '../hooks/useDebounce';
 
 const Content: React.FC = () => {
   const [searchKey, setSearchKey] = useState<string>('');
-  const [debounceSearch, setDebouncedSearch] = useState<string>(searchKey);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearch(searchKey);
-    }, 300);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchKey]);
+  const debounceSearch = useDebounce(searchKey, 300);
 
   const { loading, error, data } = useQuery<
     GetContentCardsData,
